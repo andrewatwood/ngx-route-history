@@ -1,0 +1,4 @@
+/**
+ * @license ngx-route-history
+ * MIT license
+ */
