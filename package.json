@@ -1,6 +1,6 @@
 {
     "name": "ngx-route-history",
-    "private": true,
+    "private": false,
     "version": "0.0.1",
     "description": "Build an Angular library compatible with AoT compilation and Tree shaking like an official package",
     "main": "./bundles/ngx-route-history.umd.js",
@@ -24,16 +24,20 @@
     "author": "",
     "repository": {
         "type": "git",
-        "url": "https://github.com/robisim74/ngx-route-history.git"
+        "url": "https://github.com/andrewatwood/ngx-route-history.git"
     },
     "bugs": {
-        "url": "https://github.com/robisim74/ngx-route-history/issues"
+        "url": "https://github.com/andrewatwood/ngx-route-history/issues"
     },
-    "homepage": "https://github.com/robisim74/ngx-route-history",
+    "homepage": "https://github.com/andrewatwood/ngx-route-history",
     "keywords": [
         "angular",
         "javascript",
-        "typescript"
+        "typescript",
+        "router",
+        "router history",
+        "route history",
+        "store route"
     ],
     "license": "MIT",
     "dependencies": {
