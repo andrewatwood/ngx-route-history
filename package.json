@@ -1,7 +1,7 @@
 {
     "name": "ngx-route-history",
     "private": false,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "An Angular service to automatically track route changes and store previous routes",
     "main": "./bundles/ngx-route-history.umd.js",
     "module": "./fesm5/ngx-route-history.js",
