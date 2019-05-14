@@ -14,12 +14,10 @@ export class RouteHistoryService {
      */
     public currentRoute: string;
 
-    private routeHistory: string[] = [];
-
     /**
-     * Calculates the sum.
-     * @param addends Numbers to be added
+     * Stores the history succesfully navigated routes, in reverse order.
      */
+    private routeHistory: string[] = [];
 
     constructor (private router: Router) {
         this.router.events.subscribe(event => {
@@ -27,7 +25,10 @@ export class RouteHistoryService {
         });
     }
 
-    routerEventsHandler(event: any) {
+    /**
+     * Handles router events
+     */
+    private routerEventsHandler(event: any) {
         if (event instanceof NavigationEnd) {
             this.routeHistory.unshift(event.url);
             this.currentRoute = event.url;
