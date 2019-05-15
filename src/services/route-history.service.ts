@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd, Event } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Injectable()
-export class RouteHistoryService {
+export class RouteHistoryService implements OnDestroy {
 
     /**
      * Stores the previous succesfully navigated route.
@@ -19,10 +20,20 @@ export class RouteHistoryService {
      */
     private routeHistory: string[] = [];
 
+    /**
+     * Subs to be destroyed on teardown.
+     */
+    private subs = new Subscription();
+
     constructor (private router: Router) {
-        this.router.events.subscribe(event => {
+        const routeHistorySub = this.router.events.subscribe((event: Event)  => {
             this.routerEventsHandler(event);
         });
+        this.subs.add(routeHistorySub);
+    }
+
+    public ngOnDestroy() {
+        this.subs.unsubscribe();
     }
 
     /**
