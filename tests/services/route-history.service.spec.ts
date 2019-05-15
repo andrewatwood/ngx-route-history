@@ -4,6 +4,7 @@ import { RouteHistoryService } from '../../ngx-route-history';
 import { Router, Routes, Route } from '@angular/router';
 import { TestComponent } from '../test.component';
 import { TestComponentModule } from '../test-component.module';
+import { Subject } from 'rxjs';
 
 const TestRoutes: Routes = [
     { path: '', component: TestComponent },
@@ -54,4 +55,13 @@ describe('RouteHistoryService', () => {
         expect(service.currentRoute).toEqual('/profile');
         expect(service.previousRoute).toEqual('/home');
     }));
+
+    it('should destroy', () => {
+        const mockSubject = new Subject();
+        const mockSub = mockSubject.subscribe();
+        service['subs'].add(mockSub);
+        expect(service['subs'].closed).toBe(false);
+        service.ngOnDestroy();
+        expect(service['subs'].closed).toBe(true);
+    });
 });
